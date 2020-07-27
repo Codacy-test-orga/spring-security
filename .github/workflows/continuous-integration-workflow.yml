@@ -29,25 +29,25 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
       - name: Build with Gradle
         run: ./gradlew clean build --continue
-#  snapshot_tests:
-#    name: Test against snapshots
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/checkout@v2
-#      - name: Set up JDK
-#        uses: actions/setup-java@v1
-#        with:
-#          java-version: '8'
-#      - name: Snapshot Tests
-#        run: |
-#          export GRADLE_ENTERPRISE_CACHE_USERNAME="$GRADLE_ENTERPRISE_CACHE_USER"
-#          export GRADLE_ENTERPRISE_CACHE_PASSWORD="$GRADLE_ENTERPRISE_CACHE_PASSWORD"
-#          export GRADLE_ENTERPRISE_ACCESS_KEY="$GRADLE_ENTERPRISE_SECRET_ACCESS_KEY"
-#          ./gradlew test -PforceMavenRepositories=snapshot -PspringVersion='5.+' -PreactorVersion=20+ -PspringDataVersion=Lovelace-BUILD-SNAPSHOT -PrsocketVersion=1.1.0-SNAPSHOT -PlocksDisabled --stacktrace
-#        env:
-#          GRADLE_ENTERPRISE_CACHE_USER: ${{ secrets.GRADLE_ENTERPRISE_CACHE_USER }}
-#          GRADLE_ENTERPRISE_CACHE_PASSWORD: ${{ secrets.GRADLE_ENTERPRISE_CACHE_PASSWORD }}
-#          GRADLE_ENTERPRISE_SECRET_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_SECRET_ACCESS_KEY }}
+  snapshot_tests:
+    name: Test against snapshots
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: '8'
+      - name: Snapshot Tests
+        run: |
+          export GRADLE_ENTERPRISE_CACHE_USERNAME="$GRADLE_ENTERPRISE_CACHE_USER"
+          export GRADLE_ENTERPRISE_CACHE_PASSWORD="$GRADLE_ENTERPRISE_CACHE_PASSWORD"
+          export GRADLE_ENTERPRISE_ACCESS_KEY="$GRADLE_ENTERPRISE_SECRET_ACCESS_KEY"
+          ./gradlew test -PforceMavenRepositories=snapshot -PspringVersion='5.+' -PreactorVersion=2020.0.0-M1 -PspringDataVersion=Lovelace-BUILD-SNAPSHOT -PrsocketVersion=1.1.0-SNAPSHOT -PlocksDisabled --stacktrace
+        env:
+          GRADLE_ENTERPRISE_CACHE_USER: ${{ secrets.GRADLE_ENTERPRISE_CACHE_USER }}
+          GRADLE_ENTERPRISE_CACHE_PASSWORD: ${{ secrets.GRADLE_ENTERPRISE_CACHE_PASSWORD }}
+          GRADLE_ENTERPRISE_SECRET_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_SECRET_ACCESS_KEY }}
   sonar:
     name: Static Code Analysis
     runs-on: ubuntu-latest
