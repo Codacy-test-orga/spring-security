@@ -12,16 +12,13 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        jdk: [8, 11, 12]
-      fail-fast: false
+# eventually add in matrix here
     steps:
       - uses: actions/checkout@v2
-      - name: Set up JDK ${{ matrix.jdk }}
+      - name: Set up JDK
         uses: actions/setup-java@v1
         with:
-          java-version: ${{ matrix.jdk }}
+          java-version: '8'
       - name: Cache Gradle packages
         uses: actions/cache@v2
         with:
