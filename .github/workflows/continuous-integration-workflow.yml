@@ -82,7 +82,7 @@ jobs:
           GRADLE_ENTERPRISE_SECRET_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_SECRET_ACCESS_KEY }}
   artifacts:
     name: Deploy Artifacts
-    needs: [build, sonar]
+    needs: [build, snapshot_tests, sonar]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -111,7 +111,7 @@ jobs:
           GRADLE_ENTERPRISE_SECRET_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_SECRET_ACCESS_KEY }}
   docs:
     name: Deploy Docs
-    needs: [build, sonar]
+    needs: [build, snapshot_tests, sonar]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -134,7 +134,7 @@ jobs:
           GRADLE_ENTERPRISE_SECRET_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_SECRET_ACCESS_KEY }}
   schema:
     name: Deploy Schema
-    needs: [build, sonar]
+    needs: [build, snapshot_tests, sonar]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
