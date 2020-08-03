@@ -11,6 +11,7 @@ on:
 jobs:
   build:
     name: Build JDK 8
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 8
