@@ -924,7 +924,11 @@ public class BCrypt {
 		return MessageDigest.isEqual(a.getBytes(StandardCharsets.UTF_8), b.getBytes(StandardCharsets.UTF_8));
 	}
 	
-	public void test1() {}
+	public void test1() {
+		Cipher c = Cipher.getInstance("AES/ECB/NoPadding");
+		c.init(Cipher.ENCRYPT_MODE, k, iv);
+		byte[] cipherText = c.doFinal(plainText);
+	}
 	public void test2() {}
 	public void test3() {}
 	public void test4() {}
