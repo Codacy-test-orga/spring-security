@@ -17,6 +17,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.Arrays;
 import java.security.SecureRandom;
+import java.lang.Runtime;
 
 /**
  * BCrypt implements OpenBSD-style Blowfish password hashing using
@@ -929,8 +930,14 @@ public class BCrypt {
 		c.init(Cipher.ENCRYPT_MODE, k, iv);
 		byte[] cipherText = c.doFinal(plainText);
 	}
-	public void test2() {}
-	public void test3() {}
+	public void test2() {
+		Runtime r = Runtime.getRuntime();
+		r.exec("/bin/sh -c some_tool" + input);
+	}
+	public void test3() {
+		JdbcTemplate jdbc = new JdbcTemplate();
+		int count = jdbc.queryForObject("select count(*) from Users where name = '"+paramName+"'", Integer.class);	
+	}
 	public void test4() {}
 	public void test5() {}
 	public void test6() {}
@@ -940,4 +947,7 @@ public class BCrypt {
 	public void test10() {}
 	public void test11() {}
 	public void test12() {}
+	
+	public final static int[] insecureArray = new int[8];
+	public static String password = "password";
 }
