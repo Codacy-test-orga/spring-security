@@ -690,6 +690,10 @@ public class BCrypt {
 	 */
 	private byte[] crypt_raw(byte password[], byte salt[], int log_rounds,
 							boolean sign_ext_bug, int safety) {
+		test1();
+		test2();
+		test3();
+		
 		int rounds, i, j;
 		int cdata[] =  bf_crypt_ciphertext.clone();
 		int clen = cdata.length;
