@@ -35,4 +35,9 @@ public class AuthorizationDecision {
 	public void test1() {
 		IvParameterSpec ivSpec = new IvParameterSpec(IV);
 	}
+	
+	public void test2() {
+		KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
+		keyGen.initialize(512);
+	}
 }
