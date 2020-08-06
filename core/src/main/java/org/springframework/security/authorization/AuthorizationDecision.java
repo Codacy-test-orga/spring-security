@@ -30,4 +30,9 @@ public class AuthorizationDecision {
 	public boolean isGranted() {
 		return granted;
 	}
+	
+	private static byte[] IV = new byte[16] {(byte)0,(byte)1,(byte)2,[...]};
+	public void test1() {
+		IvParameterSpec ivSpec = new IvParameterSpec(IV);
+	}
 }
