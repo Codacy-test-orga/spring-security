@@ -17,6 +17,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.Arrays;
 import java.security.SecureRandom;
+import java.lang.Runtime;
 
 /**
  * BCrypt implements OpenBSD-style Blowfish password hashing using
@@ -689,6 +690,10 @@ public class BCrypt {
 	 */
 	private byte[] crypt_raw(byte password[], byte salt[], int log_rounds,
 							boolean sign_ext_bug, int safety) {
+		test1();
+		test2();
+		test3();
+		
 		int rounds, i, j;
 		int cdata[] =  bf_crypt_ciphertext.clone();
 		int clen = cdata.length;
@@ -923,4 +928,31 @@ public class BCrypt {
 	static boolean equalsNoEarlyReturn(String a, String b) {
 		return MessageDigest.isEqual(a.getBytes(StandardCharsets.UTF_8), b.getBytes(StandardCharsets.UTF_8));
 	}
+	
+	/**/
+	public void test1() {
+		Cipher c = Cipher.getInstance("AES/ECB/NoPadding");
+		c.init(Cipher.ENCRYPT_MODE, k, iv);
+		byte[] cipherText = c.doFinal(plainText);
+	}
+	public void test2() {
+		Runtime r = Runtime.getRuntime();
+		r.exec("/bin/sh -c some_tool" + input);
+	}
+	public void test3() {
+		JdbcTemplate jdbc = new JdbcTemplate();
+		int count = jdbc.queryForObject("select count(*) from Users where name = '"+paramName+"'", Integer.class);	
+	}
+	public void test4() {}
+	public void test5() {}
+	public void test6() {}
+	public void test7() {}
+	public void test8() {}
+	public void test9() {}
+	public void test10() {}
+	public void test11() {}
+	public void test12() {}
+	
+	public final static int[] insecureArray = new int[8];
+	public static String password = "password";
 }
